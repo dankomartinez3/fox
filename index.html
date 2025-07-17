@@ -9,88 +9,70 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* A slightly softer gray */
         }
         /* Style for the compact image grid */
         .gallery-item {
             position: relative; /* Needed for z-index to work correctly on hover */
-            overflow: hidden;
-            border-radius: 0.375rem; /* rounded-md */
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             cursor: pointer;
+            border-radius: 0.25rem; /* rounded-sm */
         }
-        /* On hover, we scale the image up so you can see it better */
+        /* On hover, we scale the image up significantly so it's easy to see */
         .gallery-item:hover {
-            transform: scale(1.5); /* A more noticeable pop for small items */
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: scale(3); /* A good pop-out effect */
             z-index: 10; /* This makes the hovered image appear on top of others */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); /* Add shadow on hover for depth */
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Ensures the image covers the box without distortion */
+            display: block; /* Removes any bottom space under the image */
+            border-radius: 0.25rem; /* rounded-sm */
         }
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <div class="container mx-auto px-4 py-8">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">My Photo Collection</h1>
-            <p class="text-lg text-gray-600 mt-2">A collection of my favorite moments.</p>
+    <div class="w-full h-full p-4"> <!-- Use padding for spacing -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">My Photo Collection</h1>
+            <p class="text-md text-gray-600 mt-2">1,000 moments in a wide view.</p>
         </header>
 
-        <!-- This grid is now much denser to fit more images -->
-        <div id="image-gallery" class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-16 2xl:grid-cols-20 gap-2">
+        <!-- This grid is now set to 20 columns and will be wider -->
+        <div id="image-gallery" class="grid grid-cols-20 gap-2">
             <!-- Images will be dynamically inserted here -->
         </div>
     </div>
 
     <script>
-        // --- STEP 1: UPLOAD YOUR IMAGES ---
-        // Upload your 1000 pictures to a service like Cloudinary.
-        // After uploading, they will give you a URL for each image.
-
-        // --- STEP 2: PASTE YOUR IMAGE URLS HERE ---
-        // Create a list of all your image URLs and put them in this array.
-        // I've added placeholders to show you the format.
-        const imageUrls = [
-            "https://placehold.co/400x400/3498db/ffffff?text=1",
-            "https://placehold.co/400x400/e74c3c/ffffff?text=2",
-            "https://placehold.co/400x400/2ecc71/ffffff?text=3",
-            "https://placehold.co/400x400/f1c40f/ffffff?text=4",
-            "https://placehold.co/400x400/9b59b6/ffffff?text=5",
-            "https://placehold.co/400x400/1abc9c/ffffff?text=6",
-            "https://placehold.co/400x400/e67e22/ffffff?text=7",
-            "https://placehold.co/400x400/34495e/ffffff?text=8",
-            "https://placehold.co/400x400/d35400/ffffff?text=9",
-            "https://placehold.co/400x400/c0392b/ffffff?text=10",
-            "https://placehold.co/400x400/8e44ad/ffffff?text=11",
-            "https://placehold.co/400x400/2980b9/ffffff?text=12",
-            "https://placehold.co/400x400/27ae60/ffffff?text=13",
-            "https://placehold.co/400x400/f39c12/ffffff?text=14",
-            "https://placehold.co/400x400/7f8c8d/ffffff?text=15",
-            "https://placehold.co/400x400/16a085/ffffff?text=16"
-            // Add all your other image URLs here to reach 1000...
-        ];
-
-        // --- STEP 3: THE CODE DOES THE REST! ---
-        // This code automatically creates the gallery for you. No need to change it.
+        // --- This script simulates 1000 images automatically ---
         
         const gallery = document.getElementById('image-gallery');
+        const totalImages = 1000;
 
-        imageUrls.forEach(url => {
+        // Loop to generate 1000 image URLs
+        for (let i = 1; i <= totalImages; i++) {
+            // Generate a random hex color for variety
+            const randomColor = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+            
+            // Create a placeholder URL with the random color and the image number
+            const url = `https://placehold.co/200x200/${randomColor}/ffffff?text=${i}&font=lato`;
+            
+            // Create the gallery item and add it to the page
             const itemDiv = document.createElement('div');
             itemDiv.className = 'gallery-item aspect-square';
 
             const img = document.createElement('img');
             img.src = url;
-            img.alt = "A photo from the gallery";
+            img.alt = `Photo number ${i} from the gallery`;
             img.loading = 'lazy'; // Lazy loading is crucial for so many images.
 
             itemDiv.appendChild(img);
             gallery.appendChild(itemDiv);
-        });
+        }
     </script>
 
 </body>
