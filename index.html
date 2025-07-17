@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danko Martinez</title>
     <meta name="description" content="A collection of 1,000 photos by Danko Martinez.">
+    <meta name="google-site-verification" content="8nNwxBddFsNqZWH1pA111SWTufFzW5VqGjdTByEw134" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html, body {
@@ -27,13 +28,7 @@
         }
         .gallery-item {
             position: relative;
-            transition: transform 0.2s ease-in-out;
             cursor: pointer;
-        }
-        .gallery-item:hover {
-            transform: scale(2.5); /* Reduced scale for easier navigation */
-            z-index: 10;
-            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
         .gallery-item img {
             width: 100%;
@@ -49,8 +44,6 @@
             height: 1px;
             overflow: hidden;
         }
-
-        # --- Styles for the Lightbox Slideshow --- */
         .lightbox {
             position: fixed;
             top: 0;
@@ -72,24 +65,24 @@
         }
         .lightbox-content {
             position: relative;
-            max-width: 85vw; /* A more balanced size for all aspect ratios */
-            max-height: 85vh; /* A more balanced size for all aspect ratios */
+            max-width: 85vw;
+            max-height: 85vh;
         }
         .lightbox-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.1s ease-in-out; /* Very fast 0.1s fade transition */
+            transition: opacity 0.1s ease-in-out;
         }
         .lightbox-close {
-            position: fixed; /* Position relative to the screen */
+            position: fixed;
             top: 1rem;
             right: 2rem;
             font-size: 2.5rem;
             color: #fff;
             cursor: pointer;
             font-family: sans-serif;
-            z-index: 1001; /* Ensure it's on top of the image */
+            z-index: 1001;
         }
     </style>
 </head>
@@ -98,7 +91,6 @@
     
     <div id="image-gallery"></div>
 
-    <!-- HTML for the Lightbox -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
             <img id="lightbox-img" class="lightbox-img" src="">
@@ -1118,7 +1110,6 @@ const imageUrls = [
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_in_Golden_Woods_simple_compose_Danko_Martinez_ttll6a.png"
 ];
 
-        // --- Main Gallery and Lightbox Logic ---
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
                 const itemDiv = document.createElement('div');
@@ -1139,14 +1130,14 @@ const imageUrls = [
             setTimeout(() => {
                 lightboxImg.src = imageUrls[currentIndex];
                 lightboxImg.style.opacity = 1;
-            }, 100); // Match the very fast CSS transition
+            }, 100);
         };
 
         const openLightbox = (index) => {
             currentIndex = index;
             lightboxImg.src = imageUrls[currentIndex];
             lightbox.classList.add('visible');
-            slideshowInterval = setInterval(showNextImage, 300); // Change image every 0.3 seconds
+            slideshowInterval = setInterval(showNextImage, 300);
         };
 
         const closeLightbox = () => {
@@ -1159,7 +1150,6 @@ const imageUrls = [
             if (e.target === lightbox) closeLightbox();
         };
 
-        // --- Execution Flow ---
         window.onload = () => {
             buildMainGallery();
         };
