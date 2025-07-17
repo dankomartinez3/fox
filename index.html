@@ -1140,14 +1140,14 @@
             setTimeout(() => {
                 lightboxImg.src = imageUrls[currentIndex];
                 lightboxImg.style.opacity = 1;
-            }, 50);
+            }, 20);
         };
 
         const openLightbox = (index) => {
             currentIndex = index;
             lightboxImg.src = imageUrls[currentIndex];
             lightbox.classList.add('visible');
-            slideshowInterval = setInterval(showNextImage, 300);
+            slideshowInterval = setInterval(showNextImage, 400);
         };
 
         const closeLightbox = () => {
