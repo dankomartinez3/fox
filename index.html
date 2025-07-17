@@ -72,14 +72,14 @@
         }
         .lightbox-content {
             position: relative;
-            max-width: 60vw; /* Further reduced width for a smaller view */
-            max-height: 85vh; /* Adjusted height for portrait images */
+            max-width: 85vw; /* A more balanced size for all aspect ratios */
+            max-height: 85vh; /* A more balanced size for all aspect ratios */
         }
         .lightbox-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.05s ease-in-out; /* Very fast 0.1s fade transition */
+            transition: opacity 0.1s ease-in-out; /* Very fast 0.1s fade transition */
         }
         .lightbox-close {
             position: fixed; /* Position relative to the screen */
@@ -1117,6 +1117,7 @@ const imageUrls = [
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_Journey_to_Space_Simple_Compose_Danko_Martinez_I_uu9bpw.png",
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_in_Golden_Woods_simple_compose_Danko_Martinez_ttll6a.png"
 ];
+
         // --- Main Gallery and Lightbox Logic ---
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
