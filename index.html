@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO: Your name has been added here -->
-    <title>Danko Martinez - Photo Gallery</title>
+    <title>Danko Martinez</title>
     <meta name="description" content="A collection of 1,000 photos by Danko Martinez.">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html, body {
@@ -17,40 +14,33 @@
             height: 100%;
             background-color: #000;
         }
-        
         body {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         #image-gallery {
             display: grid;
             grid-template-columns: repeat(50, 1fr);
             gap: 0;
             width: 98%;
         }
-
         .gallery-item {
             position: relative;
             transition: transform 0.2s ease-in-out;
             cursor: pointer;
         }
-        
         .gallery-item:hover {
             transform: scale(6);
             z-index: 10;
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
-        
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-
-        /* SEO: This hides your name visually, but Google can still read it. */
         .hidden-seo-text {
             position: absolute;
             left: -10000px;
@@ -62,18 +52,10 @@
     </style>
 </head>
 <body>
-    
-    <!-- SEO: Your name has been added to this hidden H1 tag -->
     <h1 class="hidden-seo-text">Photo Gallery for Danko Martinez</h1>
-
-    <div id="image-gallery">
-        <!-- Images will be dynamically inserted here -->
-    </div>
-
+    <div id="image-gallery"></div>
     <script>
         const gallery = document.getElementById('image-gallery');
-
-        // ▼▼▼ PASTE YOUR 1,000 IMAGE URLS FROM CLOUDINARY HERE ▼▼▼
 const imageUrls = [
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752757072/Fox_Among_Sunflowers_danko_martinez_I_avdtwg.png",
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752757072/Renewal_After_Wildfire_danko_martinez_dj0t0e.png",
@@ -1076,24 +1058,16 @@ const imageUrls = [
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_Journey_to_Space_Simple_Compose_Danko_Martinez_I_uu9bpw.png",
     "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_in_Golden_Woods_simple_compose_Danko_Martinez_ttll6a.png"
 ];
-        // ▲▲▲ PASTE YOUR 1,000 IMAGE URLS FROM CLOUDINARY HERE ▲▲▲
-
         imageUrls.forEach((url, index) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'gallery-item aspect-square';
-
             const img = document.createElement('img');
             img.src = url;
-            
-            // SEO: Your name has been added to the alt text for each image.
             img.alt = `Photo ${index + 1} by Danko Martinez`; 
-            
             img.loading = 'lazy';
-
             itemDiv.appendChild(img);
             gallery.appendChild(itemDiv);
         });
     </script>
-
 </body>
 </html>
