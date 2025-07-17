@@ -11,16 +11,23 @@
             font-family: 'Inter', sans-serif;
             background-color: #f0f2f5; /* A slightly softer gray */
         }
-        /* Style for the compact image grid */
+        
+        /* --- FIX: Custom CSS for the 50-column grid --- */
+        #image-gallery {
+            display: grid;
+            grid-template-columns: repeat(50, 1fr); /* Creates 50 equal-width columns */
+            gap: 4px; /* Sets the space between images */
+        }
+
+        /* Style for the ultra-compact image grid */
         .gallery-item {
             position: relative; /* Needed for z-index to work correctly on hover */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             cursor: pointer;
-            border-radius: 0.25rem; /* rounded-sm */
         }
         /* On hover, we scale the image up significantly so it's easy to see */
         .gallery-item:hover {
-            transform: scale(3); /* A good pop-out effect */
+            transform: scale(6); /* Increased scale for a bigger pop-out effect */
             z-index: 10; /* This makes the hovered image appear on top of others */
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); /* Add shadow on hover for depth */
         }
@@ -29,20 +36,19 @@
             height: 100%;
             object-fit: cover; /* Ensures the image covers the box without distortion */
             display: block; /* Removes any bottom space under the image */
-            border-radius: 0.25rem; /* rounded-sm */
         }
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <div class="w-full h-full p-4"> <!-- Use padding for spacing -->
-        <header class="text-center mb-8">
+    <div class="w-full h-full p-2"> <!-- Reduced padding for max space -->
+        <header class="text-center mb-4">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-800">My Photo Collection</h1>
-            <p class="text-md text-gray-600 mt-2">1,000 moments in a wide view.</p>
+            <p class="text-md text-gray-600 mt-2">1,000 moments in a compact view.</p>
         </header>
 
-        <!-- This grid is now set to 20 columns and will be wider -->
-        <div id="image-gallery" class="grid grid-cols-20 gap-2">
+        <!-- The grid now uses the custom CSS style defined above -->
+        <div id="image-gallery" class="w-full">
             <!-- Images will be dynamically inserted here -->
         </div>
     </div>
@@ -59,7 +65,7 @@
             const randomColor = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
             
             // Create a placeholder URL with the random color and the image number
-            const url = `https://placehold.co/200x200/${randomColor}/ffffff?text=${i}&font=lato`;
+            const url = `https://placehold.co/100x100/${randomColor}/ffffff?text=${i}&font=lato`;
             
             // Create the gallery item and add it to the page
             const itemDiv = document.createElement('div');
