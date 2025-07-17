@@ -15,10 +15,12 @@
             height: 100%;
             background-color: #000;
         }
-        body {
+        main {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            height: 100%;
         }
         #image-gallery {
             display: grid;
@@ -29,10 +31,10 @@
         .gallery-item {
             position: relative;
             cursor: pointer;
-            transition: transform 0.2s ease-in-out; /* Added transition for smooth hover */
+            transition: transform 0.2s ease-in-out;
         }
         .gallery-item:hover {
-            transform: scale(2.5); /* Restored hover effect */
+            transform: scale(2.5);
             z-index: 10;
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
@@ -70,8 +72,8 @@
         }
         .lightbox-content {
             position: relative;
-            max-width: 85vw;
-            max-height: 85vh;
+            max-width: 40vw; /* Made much narrower for a portrait frame */
+            max-height: 90vh; /* Allow more height for portrait images */
         }
         .lightbox-img {
             width: 100%;
@@ -94,7 +96,9 @@
 <body>
     <h1 class="hidden-seo-text">Photo Gallery for Danko Martinez</h1>
     
-    <div id="image-gallery"></div>
+    <main>
+        <div id="image-gallery"></div>
+    </main>
 
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
@@ -111,7 +115,7 @@
         
         let currentIndex = 0;
         let slideshowInterval;
-        
+
         const imageUrls = [
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752757072/Fox_Among_Sunflowers_danko_martinez_I_avdtwg.png",
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752757072/Renewal_After_Wildfire_danko_martinez_dj0t0e.png",
@@ -1114,6 +1118,7 @@
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_Journey_to_Space_Simple_Compose_Danko_Martinez_I_uu9bpw.png",
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_in_Golden_Woods_simple_compose_Danko_Martinez_ttll6a.png"
         ];
+
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
                 const itemDiv = document.createElement('div');
