@@ -71,14 +71,15 @@
             visibility: visible;
         }
         .lightbox-content {
-            position: relative;
-            max-width: 40vw; /* Made much narrower for a portrait frame */
-            max-height: 90vh; /* Allow more height for portrait images */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .lightbox-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            /* Sizing is now applied directly to the image */
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain; /* This ensures the aspect ratio is maintained */
             transition: opacity 0.1s ease-in-out;
         }
         .lightbox-close {
@@ -1139,7 +1140,7 @@
             setTimeout(() => {
                 lightboxImg.src = imageUrls[currentIndex];
                 lightboxImg.style.opacity = 1;
-            }, 100);
+            }, 50);
         };
 
         const openLightbox = (index) => {
