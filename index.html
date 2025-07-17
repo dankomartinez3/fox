@@ -29,6 +29,12 @@
         .gallery-item {
             position: relative;
             cursor: pointer;
+            transition: transform 0.2s ease-in-out; /* Added transition for smooth hover */
+        }
+        .gallery-item:hover {
+            transform: scale(2.5); /* Restored hover effect */
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
         .gallery-item img {
             width: 100%;
@@ -57,7 +63,6 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         .lightbox.visible {
             opacity: 1;
@@ -1109,7 +1114,6 @@
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_Journey_to_Space_Simple_Compose_Danko_Martinez_I_uu9bpw.png",
             "https://res.cloudinary.com/dimamk02p/image/upload/v1752755354/Fox_in_Golden_Woods_simple_compose_Danko_Martinez_ttll6a.png"
         ];
-
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
                 const itemDiv = document.createElement('div');
