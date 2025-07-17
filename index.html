@@ -5,52 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Photo Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* A slightly softer gray */
+        /* --- Make the grid fill the entire page --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Hide scrollbars */
+            background-color: #f0f2f5;
         }
         
-        /* --- FIX: Custom CSS for the 50-column grid --- */
         #image-gallery {
             display: grid;
-            grid-template-columns: repeat(50, 1fr); /* Creates 50 equal-width columns */
-            gap: 4px; /* Sets the space between images */
+            grid-template-columns: repeat(50, 1fr); /* 50 columns */
+            gap: 2px; /* A very small gap between images */
+            width: 100vw; /* 100% of the viewport width */
+            height: 100vh; /* 100% of the viewport height */
         }
 
-        /* Style for the ultra-compact image grid */
         .gallery-item {
-            position: relative; /* Needed for z-index to work correctly on hover */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            position: relative;
+            transition: transform 0.2s ease-in-out;
             cursor: pointer;
         }
-        /* On hover, we scale the image up significantly so it's easy to see */
+        
         .gallery-item:hover {
-            transform: scale(6); /* Increased scale for a bigger pop-out effect */
-            z-index: 10; /* This makes the hovered image appear on top of others */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); /* Add shadow on hover for depth */
+            transform: scale(6);
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
         }
+        
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the box without distortion */
-            display: block; /* Removes any bottom space under the image */
+            object-fit: cover;
+            display: block;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-    <div class="w-full h-full p-2"> <!-- Reduced padding for max space -->
-        <header class="text-center mb-4">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">My Photo Collection</h1>
-            <p class="text-md text-gray-600 mt-2">1,000 moments in a compact view.</p>
-        </header>
-
-        <!-- The grid now uses the custom CSS style defined above -->
-        <div id="image-gallery" class="w-full">
-            <!-- Images will be dynamically inserted here -->
-        </div>
+    <!-- The page now only contains the image grid -->
+    <div id="image-gallery">
+        <!-- Images will be dynamically inserted here -->
     </div>
 
     <script>
@@ -74,7 +72,7 @@
             const img = document.createElement('img');
             img.src = url;
             img.alt = `Photo number ${i} from the gallery`;
-            img.loading = 'lazy'; // Lazy loading is crucial for so many images.
+            img.loading = 'lazy';
 
             itemDiv.appendChild(img);
             gallery.appendChild(itemDiv);
