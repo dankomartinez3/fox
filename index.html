@@ -13,7 +13,6 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            overflow: hidden; /* Hide scrollbars during loading */
         }
         body {
             display: flex;
@@ -25,7 +24,6 @@
             grid-template-columns: repeat(50, 1fr);
             gap: 0;
             width: 98%;
-            visibility: hidden; /* Initially hidden until loader is done */
         }
         .gallery-item {
             position: relative;
@@ -33,7 +31,7 @@
             cursor: pointer;
         }
         .gallery-item:hover {
-            transform: scale(6);
+            transform: scale(2.5); /* Reduced scale for easier navigation */
             z-index: 10;
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
@@ -50,30 +48,6 @@
             width: 1px;
             height: 1px;
             overflow: hidden;
-        }
-
-        /* --- Styles for the Fox Preloader --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .loader-grid {
-            position: relative;
-            width: 60vmin; /* Responsive size for the fox */
-            height: 40vmin;
-        }
-        .loader-pixel {
-            position: absolute;
-            opacity: 0;
-            transition: opacity 0.5s ease;
         }
 
         /* --- Styles for the Lightbox Slideshow --- */
@@ -98,42 +72,38 @@
         }
         .lightbox-content {
             position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
+            max-width: 95vw; /* Use more of the screen width */
+            max-height: 95vh; /* Use more of the screen height */
         }
         .lightbox-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease-in-out; /* The 0.3s fade transition */
+            transition: opacity 0.1s ease-in-out; /* Very fast 0.1s fade transition */
         }
         .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
+            position: fixed; /* Position relative to the screen */
+            top: 1rem;
+            right: 2rem;
             font-size: 2.5rem;
             color: #fff;
             cursor: pointer;
             font-family: sans-serif;
+            z-index: 1001; /* Ensure it's on top of the image */
         }
     </style>
 </head>
 <body>
     <h1 class="hidden-seo-text">Photo Gallery for Danko Martinez</h1>
     
-    <!-- Preloader container -->
-    <div id="preloader">
-        <div id="loader-grid" class="loader-grid"></div>
-    </div>
-
     <div id="image-gallery"></div>
 
     <!-- HTML for the Lightbox -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
-            <span id="lightbox-close" class="lightbox-close">&times;</span>
             <img id="lightbox-img" class="lightbox-img" src="">
         </div>
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
     </div>
 
     <script>
@@ -141,8 +111,6 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
-        const preloader = document.getElementById('preloader');
-        const loaderGrid = document.getElementById('loader-grid');
         
         let currentIndex = 0;
         let slideshowInterval;
@@ -162,7 +130,6 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            overflow: hidden; /* Hide scrollbars during loading */
         }
         body {
             display: flex;
@@ -174,7 +141,6 @@
             grid-template-columns: repeat(50, 1fr);
             gap: 0;
             width: 98%;
-            visibility: hidden; /* Initially hidden until loader is done */
         }
         .gallery-item {
             position: relative;
@@ -182,7 +148,7 @@
             cursor: pointer;
         }
         .gallery-item:hover {
-            transform: scale(6);
+            transform: scale(2.5); /* Reduced scale for easier navigation */
             z-index: 10;
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
@@ -199,30 +165,6 @@
             width: 1px;
             height: 1px;
             overflow: hidden;
-        }
-
-        /* --- Styles for the Fox Preloader --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .loader-grid {
-            position: relative;
-            width: 60vmin; /* Responsive size for the fox */
-            height: 40vmin;
-        }
-        .loader-pixel {
-            position: absolute;
-            opacity: 0;
-            transition: opacity 0.5s ease;
         }
 
         /* --- Styles for the Lightbox Slideshow --- */
@@ -247,42 +189,38 @@
         }
         .lightbox-content {
             position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
+            max-width: 95vw; /* Use more of the screen width */
+            max-height: 95vh; /* Use more of the screen height */
         }
         .lightbox-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease-in-out; /* The 0.3s fade transition */
+            transition: opacity 0.1s ease-in-out; /* Very fast 0.1s fade transition */
         }
         .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
+            position: fixed; /* Position relative to the screen */
+            top: 1rem;
+            right: 2rem;
             font-size: 2.5rem;
             color: #fff;
             cursor: pointer;
             font-family: sans-serif;
+            z-index: 1001; /* Ensure it's on top of the image */
         }
     </style>
 </head>
 <body>
     <h1 class="hidden-seo-text">Photo Gallery for Danko Martinez</h1>
     
-    <!-- Preloader container -->
-    <div id="preloader">
-        <div id="loader-grid" class="loader-grid"></div>
-    </div>
-
     <div id="image-gallery"></div>
 
     <!-- HTML for the Lightbox -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
-            <span id="lightbox-close" class="lightbox-close">&times;</span>
             <img id="lightbox-img" class="lightbox-img" src="">
         </div>
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
     </div>
 
     <script>
@@ -290,8 +228,6 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
-        const preloader = document.getElementById('preloader');
-        const loaderGrid = document.getElementById('loader-grid');
         
         let currentIndex = 0;
         let slideshowInterval;
@@ -302,48 +238,6 @@
             "https://placehold.co/100x100/e67e22/ffffff?text=F", "https://placehold.co/100x100/e74c3c/ffffff?text=O", "https://placehold.co/100x100/3498db/ffffff?text=X", "https://placehold.co/100x100/2ecc71/ffffff?text=!", "https://placehold.co/100x100/f1c40f/ffffff?text=D", "https://placehold.co/100x100/9b59b6/ffffff?text=A", "https://placehold.co/100x100/e67e22/ffffff?text=N", "https://placehold.co/100x100/e74c3c/ffffff?text=K", "https://placehold.co/100x100/3498db/ffffff?text=O",
         ];
 
-        // --- Fox Loader Logic ---
-        const foxShape = [
-            "  XX  XX  ",
-            " X..XX..X ",
-            "X...X...X ",
-            "X..XXX..X ",
-            " X.XXX.X  ",
-            "  X.X.X   ",
-            "   X.X    ",
-            "    X     "
-        ];
-        const foxWidth = 10;
-        const foxHeight = 8;
-
-        function createFoxLoader() {
-            let pixelCount = 0;
-            foxShape.forEach((row, r) => {
-                row.split('').forEach((char, c) => {
-                    if (char !== ' ') {
-                        const img = document.createElement('img');
-                        img.src = imageUrls[pixelCount % imageUrls.length];
-                        img.className = 'loader-pixel';
-                        
-                        const pixelSizeW = 100 / foxWidth;
-                        const pixelSizeH = 100 / foxHeight;
-                        img.style.width = `${pixelSizeW}%`;
-                        img.style.height = `${pixelSizeH}%`;
-                        img.style.left = `${c * pixelSizeW}%`;
-                        img.style.top = `${r * pixelSizeH}%`;
-                        
-                        setTimeout(() => {
-                            img.style.opacity = 1;
-                        }, pixelCount * 25); // Staggered fade-in
-                        
-                        loaderGrid.appendChild(img);
-                        pixelCount++;
-                    }
-                });
-            });
-            return pixelCount;
-        }
-
         // --- Main Gallery and Lightbox Logic ---
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
@@ -365,14 +259,14 @@
             setTimeout(() => {
                 lightboxImg.src = imageUrls[currentIndex];
                 lightboxImg.style.opacity = 1;
-            }, 300);
+            }, 100); // Match the very fast CSS transition
         };
 
         const openLightbox = (index) => {
             currentIndex = index;
             lightboxImg.src = imageUrls[currentIndex];
             lightbox.classList.add('visible');
-            slideshowInterval = setInterval(showNextImage, 3000);
+            slideshowInterval = setInterval(showNextImage, 300); // Change image every 0.3 seconds
         };
 
         const closeLightbox = () => {
@@ -387,19 +281,6 @@
 
         // --- Execution Flow ---
         window.onload = () => {
-            if (imageUrls.length > 0) {
-                const pixelCount = createFoxLoader();
-                // Wait for loader animation to finish, then show main gallery
-                setTimeout(() => {
-                    preloader.style.opacity = 0;
-                    gallery.style.visibility = 'visible';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, (pixelCount * 25) + 2000); // Wait for pixels to load + 2s
-            } else {
-                // If no images, hide loader immediately
-                preloader.style.display = 'none';
-                gallery.style.visibility = 'visible';
-            }
             buildMainGallery();
         };
     </script>
@@ -407,48 +288,6 @@
 </html>
 
 
-        // --- Fox Loader Logic ---
-        const foxShape = [
-            "  XX  XX  ",
-            " X..XX..X ",
-            "X...X...X ",
-            "X..XXX..X ",
-            " X.XXX.X  ",
-            "  X.X.X   ",
-            "   X.X    ",
-            "    X     "
-        ];
-        const foxWidth = 10;
-        const foxHeight = 8;
-
-        function createFoxLoader() {
-            let pixelCount = 0;
-            foxShape.forEach((row, r) => {
-                row.split('').forEach((char, c) => {
-                    if (char !== ' ') {
-                        const img = document.createElement('img');
-                        img.src = imageUrls[pixelCount % imageUrls.length];
-                        img.className = 'loader-pixel';
-                        
-                        const pixelSizeW = 100 / foxWidth;
-                        const pixelSizeH = 100 / foxHeight;
-                        img.style.width = `${pixelSizeW}%`;
-                        img.style.height = `${pixelSizeH}%`;
-                        img.style.left = `${c * pixelSizeW}%`;
-                        img.style.top = `${r * pixelSizeH}%`;
-                        
-                        setTimeout(() => {
-                            img.style.opacity = 1;
-                        }, pixelCount * 25); // Staggered fade-in
-                        
-                        loaderGrid.appendChild(img);
-                        pixelCount++;
-                    }
-                });
-            });
-            return pixelCount;
-        }
-
         // --- Main Gallery and Lightbox Logic ---
         function buildMainGallery() {
             imageUrls.forEach((url, index) => {
@@ -470,14 +309,14 @@
             setTimeout(() => {
                 lightboxImg.src = imageUrls[currentIndex];
                 lightboxImg.style.opacity = 1;
-            }, 300);
+            }, 100); // Match the very fast CSS transition
         };
 
         const openLightbox = (index) => {
             currentIndex = index;
             lightboxImg.src = imageUrls[currentIndex];
             lightbox.classList.add('visible');
-            slideshowInterval = setInterval(showNextImage, 3000);
+            slideshowInterval = setInterval(showNextImage, 300); // Change image every 0.3 seconds
         };
 
         const closeLightbox = () => {
@@ -492,19 +331,6 @@
 
         // --- Execution Flow ---
         window.onload = () => {
-            if (imageUrls.length > 0) {
-                const pixelCount = createFoxLoader();
-                // Wait for loader animation to finish, then show main gallery
-                setTimeout(() => {
-                    preloader.style.opacity = 0;
-                    gallery.style.visibility = 'visible';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, (pixelCount * 25) + 2000); // Wait for pixels to load + 2s
-            } else {
-                // If no images, hide loader immediately
-                preloader.style.display = 'none';
-                gallery.style.visibility = 'visible';
-            }
             buildMainGallery();
         };
     </script>
