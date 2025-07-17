@@ -6,22 +6,27 @@
     <title>My Photo Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* --- Make the grid fill the entire page --- */
+        /* --- Style for the page and grid --- */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
-            overflow: hidden; /* Hide scrollbars */
-            background-color: #f0f2f5;
+            height: 100%; /* Ensure body and html fill the viewport height */
+            background-color: #000; /* Set background to black */
         }
         
+        /* Use Flexbox to center the grid container both vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+        }
+
         #image-gallery {
             display: grid;
             grid-template-columns: repeat(50, 1fr); /* 50 columns */
-            gap: 2px; /* A very small gap between images */
-            width: 100vw; /* 100% of the viewport width */
-            height: 100vh; /* 100% of the viewport height */
+            gap: 0; /* No gap between images */
+            width: 98%; /* Set width to less than 100% to create side margins */
         }
 
         .gallery-item {
@@ -33,7 +38,7 @@
         .gallery-item:hover {
             transform: scale(6);
             z-index: 10;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1); /* Lighter shadow for dark background */
         }
         
         .gallery-item img {
@@ -62,8 +67,8 @@
             // Generate a random hex color for variety
             const randomColor = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
             
-            // Create a placeholder URL with the random color and the image number
-            const url = `https://placehold.co/100x100/${randomColor}/ffffff?text=${i}&font=lato`;
+            // Create a placeholder URL with the random color and an 'x'
+            const url = `https://placehold.co/100x100/${randomColor}/ffffff?text=x&font=lato`;
             
             // Create the gallery item and add it to the page
             const itemDiv = document.createElement('div');
@@ -71,8 +76,7 @@
 
             const img = document.createElement('img');
             img.src = url;
-            img.alt = `Photo number ${i} from the gallery`;
-            img.loading = 'lazy';
+            img.alt = "x"; // Set alt text to "x"
 
             itemDiv.appendChild(img);
             gallery.appendChild(itemDiv);
